@@ -1,0 +1,20 @@
+info:
+  contact: {}
+paths:
+  /healthcheck:
+    get:
+      consumes:
+      - application/json
+      description: Check API health status
+      operationId: healthcheck-healthcheck
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+      summary: Check API health status
+      tags:
+      - healthcheck
+swagger: "2.0"

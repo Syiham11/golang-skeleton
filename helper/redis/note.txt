@@ -1,0 +1,16 @@
+//get
+red := redis.GetRedisConnection()
+var ctx = context.Background()
+res, err := red.Get(ctx, c.QueryParam("feed_id")).Result()
+if err != nil {
+    fmt.Print(err)
+} else {
+    fmt.Print(res)
+}
+
+//set
+    red := redis.GetRedisConnection()
+	var ctx = context.Background()
+	ttl := time.Duration(80000) * time.Second
+	bs, _ := json.Marshal(feedData)
+	err := red.Set(ctx, c.QueryParam("feed_id"), bs, ttl).Err()
