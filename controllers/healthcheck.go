@@ -2,10 +2,9 @@ package controllers
 
 import (
 	"fmt"
+	"greebel.core.be/core"
 	"net/http"
 	"time"
-
-	"injection.javamifi.com/core"
 
 	"github.com/labstack/echo/v4"
 )

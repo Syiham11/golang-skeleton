@@ -1,0 +1,6196 @@
+definitions:
+  controllers.AddBankAccount:
+    properties:
+      account_name:
+        type: string
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+    type: object
+  controllers.AddInfluencerServiceRequest:
+    properties:
+      post_duration:
+        type: integer
+      price_rate:
+        type: integer
+      service_id:
+        type: integer
+      total_post:
+        type: integer
+    type: object
+  controllers.AddPartnerItemRequest:
+    properties:
+      area_size:
+        type: integer
+      capacity:
+        type: integer
+      details_items:
+        type: string
+      image_filenames:
+        items:
+          type: string
+        type: array
+      minimum_order:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+      price_discount:
+        type: integer
+      quota:
+        type: integer
+    type: object
+  controllers.BillingAddress:
+    properties:
+      address:
+        example: bdg
+        type: string
+      city:
+        example: bdy
+        type: string
+      country_code:
+        example: IDN
+        type: string
+      first_name:
+        example: Azhary
+        type: string
+      last_name:
+        example: Arliansyah
+        type: string
+      phone:
+        example: "082278833804"
+        type: string
+      postal_code:
+        example: ""
+        type: string
+    type: object
+  controllers.BookingApprovalRequest:
+    properties:
+      approval_status:
+        type: integer
+      booking_id:
+        type: integer
+      image_proof:
+        type: string
+    type: object
+  controllers.BookmarkedPartnerInput:
+    properties:
+      partner_id:
+        type: integer
+    type: object
+  controllers.ChangePasswordRequest:
+    properties:
+      otp:
+        type: string
+      password:
+        type: string
+      repeat_password:
+        type: string
+    type: object
+  controllers.CreateCommentRequest:
+    properties:
+      comment:
+        type: string
+    type: object
+  controllers.CreateFeedCommentRequest:
+    properties:
+      comment:
+        type: string
+    type: object
+  controllers.CreateFeedReportRequest:
+    properties:
+      report_category_id:
+        type: integer
+    type: object
+  controllers.CreateFeedRequest:
+    properties:
+      caption:
+        type: string
+      feed_category_id:
+        type: integer
+      feed_media:
+        items:
+          $ref: '#/definitions/controllers.Media'
+        type: array
+      feed_type:
+        type: string
+    type: object
+  controllers.CreateMagazineReportRequest:
+    properties:
+      comment_id:
+        type: integer
+      report_category_id:
+        type: integer
+    type: object
+  controllers.CreateTalentRiderRequest:
+    properties:
+      details:
+        type: string
+      name:
+        type: string
+    type: object
+  controllers.CreateTnvData:
+    properties:
+      address:
+        type: string
+      category:
+        type: string
+      city_id:
+        type: integer
+      email:
+        type: string
+      id_number:
+        type: string
+      instagram:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+    type: object
+  controllers.CreateUserReportRequest:
+    properties:
+      report_category_id:
+        type: integer
+    type: object
+  controllers.CreditCard:
+    properties:
+      authentication:
+        example: rba
+        type: string
+      save_card:
+        example: false
+        type: boolean
+      secure:
+        example: false
+        type: boolean
+    type: object
+  controllers.CustomerDetails:
+    properties:
+      billing_address:
+        $ref: '#/definitions/controllers.BillingAddress'
+      email:
+        example: arliansyah_azhary@yahoo.com
+        type: string
+      first_name:
+        example: Azhary
+        type: string
+      last_name:
+        example: Arliansyah
+        type: string
+      phone:
+        example: "083248972943"
+        type: string
+      shipping_address:
+        $ref: '#/definitions/controllers.ShippingAddress'
+    type: object
+  controllers.EditBookingRequest:
+    properties:
+      buyer_address:
+        type: string
+      buyer_name:
+        type: string
+      buyer_phone_number:
+        type: string
+    type: object
+  controllers.EditInfluencer:
+    properties:
+      date_of_birth:
+        type: string
+      marital_id:
+        type: integer
+      religion_id:
+        type: integer
+      stage_name:
+        type: string
+    required:
+      - date_of_birth
+      - marital_id
+      - religion_id
+      - stage_name
+    type: object
+  controllers.EditPartnerItemRequest:
+    properties:
+      area_size:
+        type: integer
+      capacity:
+        type: integer
+      deleted_item_image_id:
+        items:
+          type: integer
+        type: array
+      details_items:
+        type: string
+      image_filenames:
+        items:
+          type: string
+        type: array
+      minimum_order:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+      quota:
+        type: integer
+    type: object
+  controllers.EditPartnerRequest:
+    properties:
+      influencer:
+        $ref: '#/definitions/controllers.EditInfluencer'
+      partner:
+        $ref: '#/definitions/controllers.Partner'
+      partner_type:
+        type: string
+      talent:
+        $ref: '#/definitions/controllers.EditTalent'
+      user:
+        $ref: '#/definitions/controllers.EditUser'
+      vendor:
+        $ref: '#/definitions/controllers.EditVendor'
+      venue:
+        $ref: '#/definitions/controllers.EditVenue'
+    required:
+      - partner_type
+    type: object
+  controllers.EditTalent:
+    properties:
+      date_of_birth:
+        type: string
+      religion_id:
+        type: integer
+      stage_name:
+        type: string
+    type: object
+  controllers.EditUser:
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      username:
+        type: string
+    required:
+      - email
+      - name
+      - phone_number
+      - username
+    type: object
+  controllers.EditUserRequest:
+    properties:
+      user:
+        $ref: '#/definitions/controllers.EditUser'
+    type: object
+  controllers.EditVendor:
+    properties:
+      close:
+        type: string
+      open:
+        type: string
+      pic_address:
+        type: string
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+    required:
+      - close
+      - open
+      - pic_address
+      - pic_name
+      - pic_phone_number
+    type: object
+  controllers.EditVenue:
+    properties:
+      pic_address:
+        type: string
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+    required:
+      - pic_address
+      - pic_name
+      - pic_phone_number
+    type: object
+  controllers.ForgotPasswordRequest:
+    properties:
+      otp:
+        type: string
+      password:
+        type: string
+      repeat_password:
+        type: string
+    type: object
+  controllers.Influencer:
+    properties:
+      date_of_birth:
+        type: string
+      influencer_images:
+        items:
+          type: string
+        type: array
+      influencer_services:
+        items:
+          $ref: '#/definitions/controllers.InfluencerService'
+        type: array
+      marital_id:
+        type: integer
+      religion_id:
+        type: integer
+      stage_name:
+        type: string
+    required:
+      - date_of_birth
+      - marital_id
+      - religion_id
+      - stage_name
+    type: object
+  controllers.InfluencerBookingRequest:
+    properties:
+      buyer_address:
+        type: string
+      buyer_name:
+        type: string
+      buyer_phone_number:
+        type: string
+      details:
+        type: string
+      documents:
+        items:
+          type: string
+        type: array
+      note:
+        type: string
+      partner_id:
+        type: integer
+      post_date:
+        type: string
+      product_name:
+        type: string
+      services_id:
+        items:
+          type: integer
+        type: array
+      to_do_list:
+        type: string
+    type: object
+  controllers.InfluencerService:
+    properties:
+      post_duration:
+        type: integer
+      price_rate:
+        type: integer
+      service_id:
+        type: integer
+      total_post:
+        type: integer
+    required:
+      - post_duration
+      - price_rate
+      - service_id
+      - total_post
+    type: object
+  controllers.LoginRequest:
+    properties:
+      password:
+        type: string
+      player_id:
+        type: string
+      username:
+        type: string
+    type: object
+  controllers.ManagePartnerScheduleRequest:
+    properties:
+      added_schedules_date:
+        items:
+          type: string
+        type: array
+      removed_schedules_date:
+        items:
+          type: string
+        type: array
+    type: object
+  controllers.Media:
+    properties:
+      image_url:
+        type: string
+      original_url:
+        type: string
+      video_id:
+        type: string
+    type: object
+  controllers.MidtransItemDetail:
+    properties:
+      brand:
+        type: string
+      category:
+        type: string
+      id:
+        type: string
+      merchant_name:
+        type: string
+      name:
+        type: string
+      price:
+        type: integer
+      quantity:
+        type: integer
+    type: object
+  controllers.Partner:
+    properties:
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+      category_id:
+        type: integer
+      city_id:
+        type: integer
+      description:
+        type: string
+      gender:
+        type: string
+      name:
+        type: string
+      rating:
+        type: integer
+    required:
+      - category_id
+      - city_id
+      - description
+      - name
+    type: object
+  controllers.PartnerSocmed:
+    properties:
+      account_name:
+        type: string
+      followers:
+        type: integer
+      socmed_id:
+        type: integer
+    required:
+      - account_name
+      - followers
+      - socmed_id
+    type: object
+  controllers.RefreshTokenRequest:
+    properties:
+      video_id:
+        type: string
+    type: object
+  controllers.RegisterPartnerRequest:
+    properties:
+      influencer:
+        $ref: '#/definitions/controllers.Influencer'
+      partner:
+        $ref: '#/definitions/controllers.Partner'
+      partner_socmeds:
+        items:
+          $ref: '#/definitions/controllers.PartnerSocmed'
+        type: array
+      register_as:
+        type: string
+      talent:
+        $ref: '#/definitions/controllers.Talent'
+      user:
+        $ref: '#/definitions/controllers.User'
+      vendor:
+        $ref: '#/definitions/controllers.Vendor'
+      venue:
+        $ref: '#/definitions/controllers.Venue'
+    required:
+      - register_as
+    type: object
+  controllers.RegisterUserRequest:
+    properties:
+      user:
+        $ref: '#/definitions/controllers.User'
+    type: object
+  controllers.RequestOTPNoAuthRequest:
+    properties:
+      category:
+        type: string
+      email:
+        type: string
+    type: object
+  controllers.RequestOTPRequest:
+    properties:
+      category:
+        type: string
+    type: object
+  controllers.ResendOTPNoAuthRequest:
+    properties:
+      category:
+        type: string
+      email:
+        type: string
+      platform:
+        type: string
+    required:
+      - category
+      - email
+      - platform
+    type: object
+  controllers.ReviewRequest:
+    properties:
+      content:
+        type: string
+      image_filename:
+        type: string
+      partner_id:
+        type: integer
+      rating:
+        type: integer
+    type: object
+  controllers.ShippingAddress:
+    properties:
+      address:
+        example: bdg
+        type: string
+      city:
+        example: bdy
+        type: string
+      country_code:
+        example: IDN
+        type: string
+      first_name:
+        example: Azhary
+        type: string
+      last_name:
+        example: Arliansyah
+        type: string
+      phone:
+        example: "082278833804"
+        type: string
+      postal_code:
+        example: "40523"
+        type: string
+    type: object
+  controllers.SnapRequestSwagger:
+    properties:
+      credit_card:
+        $ref: '#/definitions/controllers.CreditCard'
+      customer_details:
+        $ref: '#/definitions/controllers.CustomerDetails'
+      item_details:
+        items:
+          $ref: '#/definitions/controllers.MidtransItemDetail'
+        type: array
+      transaction_details:
+        $ref: '#/definitions/controllers.TransactionDetails'
+    type: object
+  controllers.Talent:
+    properties:
+      date_of_birth:
+        type: string
+      price_rate:
+        type: integer
+      religion_id:
+        type: integer
+      stage_name:
+        type: string
+      talent_images:
+        items:
+          type: string
+        type: array
+      talent_riders:
+        items:
+          $ref: '#/definitions/controllers.TalentRider'
+        type: array
+    type: object
+  controllers.TalentBookingRequest:
+    properties:
+      address:
+        type: string
+      buyer_address:
+        type: string
+      buyer_name:
+        type: string
+      buyer_phone_number:
+        type: string
+      city_id:
+        type: integer
+      event_date:
+        type: string
+      event_name:
+        type: string
+      event_time:
+        type: string
+      note:
+        type: string
+      partner_id:
+        type: integer
+    type: object
+  controllers.TalentRider:
+    properties:
+      details:
+        type: string
+      name:
+        type: string
+    type: object
+  controllers.TransactionDetails:
+    properties:
+      booking_id:
+        type: integer
+      currency:
+        example: IDR
+        type: string
+      gross_amount:
+        example: 800000
+        type: integer
+      order_id:
+        example: "1601664526580"
+        type: string
+    type: object
+  controllers.UpdateFeedRequest:
+    properties:
+      caption:
+        type: string
+      deleted_feed_media_id:
+        items:
+          type: integer
+        type: array
+      feed_category_id:
+        type: integer
+      feed_media:
+        items:
+          $ref: '#/definitions/controllers.Media'
+        type: array
+      feed_type:
+        type: string
+    type: object
+  controllers.UpdatePriceRateRequest:
+    properties:
+      item_id:
+        type: integer
+      price_rate:
+        type: integer
+    type: object
+  controllers.User:
+    properties:
+      address:
+        type: string
+      confirm_password:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      username:
+        type: string
+    required:
+      - confirm_password
+      - email
+      - name
+      - password
+      - phone_number
+      - username
+    type: object
+  controllers.Vendor:
+    properties:
+      close:
+        type: string
+      open:
+        type: string
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+      venue_vendor_items:
+        items:
+          $ref: '#/definitions/controllers.VenueVendorItem'
+        type: array
+    required:
+      - close
+      - open
+      - pic_name
+      - pic_phone_number
+    type: object
+  controllers.VendorBookingRequest:
+    properties:
+      address:
+        type: string
+      buyer_address:
+        type: string
+      buyer_name:
+        type: string
+      buyer_phone_number:
+        type: string
+      city_id:
+        type: integer
+      end_time:
+        type: string
+      event_date:
+        type: string
+      event_name:
+        type: string
+      note:
+        type: string
+      partner_id:
+        type: integer
+      start_time:
+        type: string
+      vendor_item_book:
+        items:
+          $ref: '#/definitions/controllers.VendorItemBook'
+        type: array
+    type: object
+  controllers.VendorItemBook:
+    properties:
+      amount:
+        type: integer
+      item_id:
+        type: integer
+    type: object
+  controllers.Venue:
+    properties:
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+      venue_vendor_items:
+        items:
+          $ref: '#/definitions/controllers.VenueVendorItem'
+        type: array
+    required:
+      - pic_name
+      - pic_phone_number
+    type: object
+  controllers.VenueBookingRequest:
+    properties:
+      buyer_address:
+        type: string
+      buyer_name:
+        type: string
+      buyer_phone_number:
+        type: string
+      event_date:
+        type: string
+      event_name:
+        type: string
+      event_time:
+        type: string
+      invitation_quota:
+        type: integer
+      item_id:
+        type: integer
+      note:
+        type: string
+      partner_id:
+        type: integer
+    type: object
+  controllers.VenueVendorItem:
+    properties:
+      area_size:
+        type: integer
+      capacity:
+        type: integer
+      detail_items:
+        type: string
+      minimum_order:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+      quota:
+        type: integer
+      venue_vendor_item_images:
+        items:
+          type: string
+        type: array
+    required:
+      - area_size
+      - capacity
+      - detail_items
+      - minimum_order
+      - name
+      - price
+      - quota
+    type: object
+  controllers.VerifyOTPNoAuthRequest:
+    properties:
+      category:
+        type: string
+      code:
+        type: string
+      email:
+        type: string
+    required:
+      - category
+      - code
+      - email
+    type: object
+  controllers.VerifyOTPRequest:
+    properties:
+      category:
+        type: string
+      code:
+        type: string
+      user_id:
+        type: integer
+    required:
+      - category
+      - code
+      - user_id
+    type: object
+  controllers.VodUpdateRequest:
+    properties:
+      description:
+        type: string
+      filename:
+        type: string
+      title:
+        type: string
+      watermark:
+        type: boolean
+    type: object
+  helper.HttpResponse:
+    properties:
+      data:
+        additionalProperties: true
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  models.Ads:
+    properties:
+      category:
+        type: string
+      client_id:
+        type: string
+      created_at:
+        type: string
+      desktop_active:
+        type: integer
+      id:
+        type: integer
+      mobile_active:
+        type: integer
+      name:
+        type: string
+      placement:
+        $ref: '#/definitions/models.Placement'
+      source:
+        type: string
+      target_url:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Author:
+    properties:
+      avatar_url:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.BankAccount:
+    properties:
+      bank_code:
+        type: string
+      bank_name:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Banner:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      images:
+        type: string
+      link:
+        type: string
+      sub_title:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Booking:
+    properties:
+      address:
+        type: string
+      approval_status:
+        type: integer
+      approval_status_string:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      note:
+        type: string
+      partner_id:
+        type: integer
+      phone_number:
+        type: string
+      proof:
+        type: string
+      refund_status:
+        type: integer
+      refund_status_string:
+        type: string
+      status_booking:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.BookingDetail:
+    properties:
+      address:
+        type: string
+      approval_status:
+        type: integer
+      approval_status_string:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      note:
+        type: string
+      partner:
+        $ref: '#/definitions/models.Partner'
+      partner_id:
+        type: integer
+      partner_type:
+        type: string
+      phone_number:
+        type: string
+      proof:
+        type: string
+      refund_status:
+        type: integer
+      refund_status_string:
+        type: string
+      status_booking:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.BookmarkPartnerResponse:
+    properties:
+      address:
+        type: string
+      city:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      partner_id:
+        type: integer
+      partner_type:
+        type: string
+      profile_picture:
+        type: string
+      province:
+        type: string
+      rating:
+        type: integer
+      rating_count:
+        type: integer
+    type: object
+  models.City:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.EventmagzComment:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.Feed:
+    properties:
+      caption:
+        type: string
+      created_at:
+        type: string
+      feed_category_id:
+        type: integer
+      feed_type:
+        type: string
+      id:
+        type: integer
+      is_banned:
+        type: integer
+      is_liked:
+        type: boolean
+      total_views:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.FeedCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      sorting:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.FeedComment:
+    properties:
+      comment:
+        type: string
+      created_at:
+        type: string
+      feed_id:
+        type: integer
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.FeedLike:
+    properties:
+      created_at:
+        type: string
+      feed_id:
+        type: integer
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.FeedReport:
+    properties:
+      created_at:
+        type: string
+      feed_id:
+        type: integer
+      id:
+        type: integer
+      report_category_id:
+        type: integer
+      reporter_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.FeedReportCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.HistoryPrice:
+    properties:
+      created_at:
+        type: string
+      date:
+        type: string
+      id:
+        type: integer
+      items:
+        type: string
+      new_price:
+        type: integer
+      new_total_post:
+        type: integer
+      old_price:
+        type: integer
+      old_total_post:
+        type: integer
+      partner_id:
+        type: integer
+      status:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.InfluencerInfo:
+    properties:
+      created_at:
+        type: string
+      date_of_birth:
+        type: string
+      id:
+        type: integer
+      influencer_images:
+        items:
+          $ref: '#/definitions/models.TalentInfluencerImage'
+        type: array
+      marital_id:
+        type: integer
+      marital_status:
+        $ref: '#/definitions/models.MaritalStatus'
+      partner:
+        $ref: '#/definitions/models.Partner'
+      partner_id:
+        type: integer
+      religion:
+        $ref: '#/definitions/models.Religion'
+      religion_id:
+        type: integer
+      services:
+        items:
+          $ref: '#/definitions/models.InfluencerService'
+        type: array
+      stage_name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.InfluencerService:
+    properties:
+      created_at:
+        type: string
+      discount:
+        type: number
+      id:
+        type: integer
+      influencer_id:
+        type: integer
+      name:
+        type: string
+      post_duration:
+        type: integer
+      price_discount:
+        type: integer
+      price_rate:
+        type: integer
+      service_id:
+        type: integer
+      total_post:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Magazine:
+    properties:
+      author:
+        $ref: '#/definitions/models.Author'
+      author_id:
+        type: integer
+      category_id:
+        type: integer
+      content:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      images:
+        items:
+          type: string
+        type: array
+      keywords:
+        type: string
+      magazine_category:
+        $ref: '#/definitions/models.MagazineCategory'
+      persons:
+        type: string
+      slug_url:
+        type: string
+      source_image:
+        type: string
+      status:
+        type: string
+      tags:
+        type: string
+      title:
+        type: string
+      total_views:
+        type: integer
+      type_thumbnail:
+        type: string
+      updated_at:
+        type: string
+      url_youtube:
+        type: string
+    type: object
+  models.MagazineCategory:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.MagazineReport:
+    properties:
+      comment_id:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+      report_category_id:
+        type: integer
+      reporter_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.MagazineReportCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.MaritalStatus:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.News:
+    properties:
+      author_image:
+        type: string
+      author_name:
+        type: string
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      news_category:
+        $ref: '#/definitions/models.NewsCategory'
+      news_category_id:
+        type: integer
+      slug_url:
+        type: string
+      source:
+        type: string
+      tags:
+        type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      total_views:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.NewsCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Notification:
+    properties:
+      _:
+        type: string
+      additional_data:
+        items:
+          type: integer
+        type: array
+      additional_data_map:
+        additionalProperties: true
+        type: object
+      content:
+        type: string
+      created_at:
+        type: string
+      external_user_ids:
+        items:
+          type: string
+        type: array
+      from_user:
+        $ref: '#/definitions/models.User'
+      from_user_id:
+        type: integer
+      heading:
+        type: string
+      id:
+        type: integer
+      notification_type:
+        type: string
+      read_status:
+        type: integer
+      segments:
+        items:
+          type: string
+        type: array
+      updated_at:
+        type: string
+      url:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.OTPNoAuth:
+    properties:
+      category:
+        type: string
+      code:
+        type: string
+      created_at:
+        type: string
+      expired:
+        type: integer
+      id:
+        type: integer
+      identity:
+        type: string
+      platform:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Partner:
+    properties:
+      account_number:
+        type: string
+      bank:
+        $ref: '#/definitions/models.BankAccount'
+      bank_accounts:
+        items:
+          $ref: '#/definitions/models.PartnerBankAccount'
+        type: array
+      bank_id:
+        type: integer
+      category_id:
+        type: integer
+      city:
+        $ref: '#/definitions/models.City'
+      city_id:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      gender:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      partner_category:
+        $ref: '#/definitions/models.PartnerCategories'
+      promoted:
+        type: integer
+      rating:
+        type: integer
+      rating_count:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+    type: object
+  models.PartnerBankAccount:
+    properties:
+      account_name:
+        type: string
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+      bank_name:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      partner_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.PartnerCalendar:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      partner_id:
+        type: integer
+      schedule:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.PartnerCategories:
+    properties:
+      created_at:
+        type: string
+      genre_categories:
+        type: string
+      group_categories:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      name_categories:
+        type: string
+      subgenre_categories:
+        type: string
+      type_categories:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+  models.PartnerCategoriesGrouped:
+    properties:
+      genre_categories:
+        type: string
+      group_categories:
+        type: string
+      name_categories:
+        type: string
+      subgenre_categories:
+        type: string
+      type_categories:
+        type: string
+      url:
+        type: string
+    type: object
+  models.PartnerReview:
+    properties:
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+      partner_id:
+        type: integer
+      rating:
+        type: integer
+      updated_at:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+      user_id:
+        type: integer
+      username:
+        type: string
+    type: object
+  models.Payload:
+    properties:
+      bill_key:
+        example: "456045149537"
+        type: string
+      biller_code:
+        example: "70012"
+        type: string
+      currency:
+        example: IDR
+        type: string
+      fraud_status:
+        example: accept
+        type: string
+      gross_amount:
+        example: "1.00"
+        type: string
+      merchant_id:
+        example: G826347214
+        type: string
+      order_id:
+        example: "1601539278455938900"
+        type: string
+      payment_type:
+        example: echannel
+        type: string
+      settlement_time:
+        example: "2020-10-01 15:01:32"
+        type: string
+      signature_key:
+        example: af0fea0778d4e2604fdc850deb920eeb8300594c487312888bd8b45c36645cb9a9dc188c3e0ae31ad3047e8a458453383b056b9eb0fbd5a4c17aa145301c61be
+        type: string
+      status_code:
+        example: "201"
+        type: string
+      status_message:
+        example: midtrans payment notification
+        type: string
+      transaction_id:
+        example: cb73aee8-beae-40cf-87bc-5fefc65dae19
+        type: string
+      transaction_status:
+        example: settlement
+        type: string
+      transaction_time:
+        example: "2020-10-01 15:01:32"
+        type: string
+      va_numbers:
+        additionalProperties: true
+        type: object
+    type: object
+  models.Payment:
+    properties:
+      bank:
+        type: string
+      bill_key:
+        type: string
+      biller_code:
+        type: string
+      charge_response:
+        type: string
+      currency:
+        type: string
+      gross_amount:
+        type: string
+      id:
+        type: integer
+      order_id:
+        type: string
+      payment_type:
+        type: string
+      settlement_time:
+        type: string
+      transaction_id:
+        type: string
+      transaction_status:
+        type: string
+      transaction_time:
+        type: string
+      va_number:
+        type: string
+    type: object
+  models.Placement:
+    properties:
+      desktop:
+        items:
+          $ref: '#/definitions/models.Platform'
+        type: array
+      mobile:
+        items:
+          $ref: '#/definitions/models.Platform'
+        type: array
+    type: object
+  models.Platform:
+    properties:
+      description:
+        type: string
+      image:
+        type: string
+      size:
+        type: string
+      title:
+        type: string
+    type: object
+  models.Program:
+    properties:
+      category:
+        type: string
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      slug_url:
+        type: string
+      thumbnail:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+  models.Promo:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      discount_fee:
+        type: string
+      discount_persentase:
+        type: string
+      end_date:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+      promo_code:
+        type: string
+      promo_qouta:
+        type: string
+      promo_tipe:
+        type: string
+      promo_tipe_id:
+        type: string
+      snk:
+        type: string
+      start_date:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Province:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Religion:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.ServiceType:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Socmed_type:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Talent:
+    properties:
+      created_at:
+        type: string
+      date_of_birth:
+        type: string
+      id:
+        type: integer
+      partner:
+        $ref: '#/definitions/models.Partner'
+      partner_id:
+        type: integer
+      price_discount:
+        type: integer
+      price_rate:
+        type: integer
+      religion:
+        $ref: '#/definitions/models.Religion'
+      religion_id:
+        type: integer
+      stage_name:
+        type: string
+      talent_riders:
+        items:
+          $ref: '#/definitions/models.TalentRider'
+        type: array
+      updated_at:
+        type: string
+    type: object
+  models.TalentInfluencerImage:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      partner_id:
+        type: integer
+      thumbnail:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+  models.TalentRider:
+    properties:
+      created_at:
+        type: string
+      details:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      talent:
+        $ref: '#/definitions/models.Talent'
+      talent_id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Ticket:
+    properties:
+      banner:
+        type: string
+      categori_ticket_id:
+        type: integer
+      city:
+        $ref: '#/definitions/models.City'
+      city_id:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      end_date:
+        type: string
+      id:
+        type: integer
+      location:
+        type: string
+      name_event:
+        type: string
+      penyelenggara:
+        type: string
+      start_date:
+        type: string
+      start_time:
+        type: string
+      ticketcategory:
+        $ref: '#/definitions/models.TicketCategory'
+      updated_at:
+        type: string
+      venue_image:
+        type: string
+    type: object
+  models.TicketCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.TicketLineup:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      gendre:
+        type: string
+      id:
+        type: integer
+      image:
+        type: string
+      name:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.Tnv:
+    properties:
+      address:
+        type: string
+      category:
+        type: string
+      city_id:
+        type: integer
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      id_number:
+        type: string
+      instagram:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.User:
+    properties:
+      address:
+        type: string
+      bank_accounts:
+        items:
+          $ref: '#/definitions/models.UserBankAccount'
+        type: array
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      is_partner:
+        type: integer
+      name:
+        type: string
+      password:
+        type: string
+      phone_number:
+        type: string
+      player_id:
+        type: string
+      profile_picture:
+        type: string
+      status_active:
+        type: integer
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UserBankAccount:
+    properties:
+      account_name:
+        type: string
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+      bank_name:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.UserBlock:
+    properties:
+      blocked_user_id:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.UserReport:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      report_category_id:
+        type: integer
+      reporter_id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.UserReportCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Vendor:
+    properties:
+      close:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      open:
+        type: string
+      partner:
+        $ref: '#/definitions/models.Partner'
+      partner_id:
+        type: integer
+      pic_address:
+        type: string
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.VenueInfo:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      items:
+        items:
+          $ref: '#/definitions/models.VenueVendorItem'
+        type: array
+      partner:
+        $ref: '#/definitions/models.Partner'
+      partner_id:
+        type: integer
+      pic_address:
+        type: string
+      pic_gender:
+        type: string
+      pic_name:
+        type: string
+      pic_phone_number:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  models.VenueVendorItem:
+    properties:
+      area_size:
+        type: integer
+      capacity:
+        type: integer
+      created_at:
+        type: string
+      details_items:
+        type: string
+      discount:
+        type: number
+      id:
+        type: integer
+      image:
+        items:
+          $ref: '#/definitions/models.VenueVendorItemImage'
+        type: array
+      minimum_order:
+        type: integer
+      name:
+        type: string
+      partner_id:
+        type: integer
+      price:
+        type: integer
+      price_discount:
+        type: integer
+      quota:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.VenueVendorItemImage:
+    properties:
+      created_at:
+        type: string
+      id:
+        type: integer
+      item:
+        $ref: '#/definitions/models.VenueVendorItem'
+      item_id:
+        type: integer
+      thumbnail:
+        type: string
+      updated_at:
+        type: string
+      url:
+        type: string
+    type: object
+  models.Video:
+    properties:
+      category_id:
+        type: integer
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      title:
+        type: string
+      updated_at:
+        type: string
+      videos_category:
+        $ref: '#/definitions/models.VideosCategory'
+    type: object
+  models.VideosCategory:
+    properties:
+      category:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+    type: object
+  models.Vod:
+    properties:
+      cover_image:
+        type: string
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: integer
+      original_url:
+        type: string
+      playback_url:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      video_id:
+        type: string
+    type: object
+info:
+  contact: { }
+paths:
+  /api/v1/ads:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of ads
+      operationId: ads-ads-list
+      parameters:
+        - default: idle
+          description: filter ads by mobile status
+          enum:
+            - idle
+            - active
+            - non-active
+          in: query
+          name: mobile_active
+          type: string
+        - default: idle
+          description: filter ads by desktop status
+          enum:
+            - idle
+            - active
+            - non-active
+          in: query
+          name: desktop_active
+          type: string
+        - default: internal
+          description: filter by source
+          enum:
+            - internal
+            - external
+          in: query
+          name: source
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Ads'
+      summary: Get list of ads
+      tags:
+        - ads
+  /api/v1/auth/apple-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Apple login account
+      operationId: auth-apple-login
+      parameters:
+        - description: The token you got from apple login response
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Apple login account
+      tags:
+        - auth
+  /api/v1/auth/delete-image:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete image
+      operationId: auth-delete-image
+      parameters:
+        - description: image filename
+          in: formData
+          name: filename
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.HttpResponse'
+      summary: Delete image
+      tags:
+        - auth
+  /api/v1/auth/facebook-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Facebook login account
+      operationId: auth-facebook-login
+      parameters:
+        - description: Facebook access token
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Facebook login account
+      tags:
+        - auth
+  /api/v1/auth/facebook-login-x:
+    post:
+      consumes:
+        - application/json
+      description: Facebook login account
+      operationId: auth-facebook-login-x
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Facebook login account
+      tags:
+        - auth
+  /api/v1/auth/forgot-password:
+    post:
+      consumes:
+        - application/json
+      description: Forgot password
+      operationId: auth-forgot-password
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ForgotPasswordRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Forgot password
+      tags:
+        - auth
+  /api/v1/auth/google-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Google login account
+      operationId: auth-google-login
+      parameters:
+        - description: Google access token
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Google login account
+      tags:
+        - auth
+  /api/v1/auth/google-login-x:
+    post:
+      consumes:
+        - application/json
+      description: Google login account
+      operationId: auth-google-login-x
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Google login account
+      tags:
+        - auth
+  /api/v1/auth/login:
+    post:
+      consumes:
+        - application/json
+      description: Login account
+      operationId: auth-login
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.LoginRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Login account
+      tags:
+        - auth
+  /api/v1/auth/register-partner:
+    post:
+      consumes:
+        - application/json
+      description: Register new partner account
+      operationId: auth-register-partner
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RegisterPartnerRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Register new partner account
+      tags:
+        - auth
+  /api/v1/auth/register-user:
+    post:
+      consumes:
+        - application/json
+      description: Register new user account
+      operationId: auth-register-user
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RegisterUserRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Register new user account
+      tags:
+        - auth
+  /api/v1/auth/request-otp:
+    post:
+      consumes:
+        - application/json
+      description: Request OTP
+      operationId: auth-request-otp
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RequestOTPNoAuthRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Request OTP
+      tags:
+        - auth
+  /api/v1/auth/upload-image:
+    post:
+      consumes:
+        - application/json
+      description: Upload image
+      operationId: auth-upload-image
+      parameters:
+        - description: image file
+          in: formData
+          name: image
+          required: true
+          type: file
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Upload image
+      tags:
+        - auth
+  /api/v1/auth/verify-otp:
+    post:
+      consumes:
+        - application/json
+      description: Verify OTP
+      operationId: auth-verify-otp
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VerifyOTPRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Verify OTP
+      tags:
+        - auth
+  /api/v1/banners:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of banners
+      operationId: banners-banner-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of banners in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Banner'
+            type: array
+      summary: Get list of banners
+      tags:
+        - banners
+  /api/v1/bookings/{id}:
+    get:
+      consumes:
+        - application/json
+      description: Get detail booking
+      operationId: bookings-get-booking-detail
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Booking ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Get detail booking
+      tags:
+        - bookings
+  /api/v1/bookings/{id}/edit:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Edit buyer detail
+      operationId: bookings-edit-buyer-detail
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: ID
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.EditBookingRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Magazine'
+      summary: Edit buyer detail
+      tags:
+        - bookings
+  /api/v1/bookings/cancel/{booking_id}:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Cancel booking
+      operationId: bookings-cancel-booking
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Booking ID
+          in: path
+          name: booking_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Cancel booking
+      tags:
+        - bookings
+  /api/v1/bookings/influencer:
+    post:
+      consumes:
+        - application/json
+      description: Create influencer booking
+      operationId: bookings-influencer-booking
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.InfluencerBookingRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Create influencer booking
+      tags:
+        - bookings
+  /api/v1/bookings/info/{order_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get detail booking order id
+      operationId: bookings-get-booking-detail-by-order-id
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Booking ID
+          in: path
+          name: order_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BookingDetail'
+      summary: Get detail booking order id
+      tags:
+        - bookings
+  /api/v1/bookings/my-orders:
+    get:
+      consumes:
+        - application/json
+      description: Get my orders
+      operationId: bookings-get-my-orders
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: filter by approval status (0 = menunggu partner, 1 = diterima,
+            2 = selesai, 3 = diselesaikan oleh partner, -1 = ditolak)
+          in: query
+          name: approval_status
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Get my orders
+      tags:
+        - bookings
+  /api/v1/bookings/my-purchase-histories:
+    get:
+      consumes:
+        - application/json
+      description: Get my purchase histories
+      operationId: bookings-get-purchase-histories
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Get my purchase histories
+      tags:
+        - bookings
+  /api/v1/bookings/talent:
+    post:
+      consumes:
+        - application/json
+      description: Create talent booking
+      operationId: bookings-talent-booking
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.TalentBookingRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Create talent booking
+      tags:
+        - bookings
+  /api/v1/bookings/vendor:
+    post:
+      consumes:
+        - application/json
+      description: Create vendor booking
+      operationId: bookings-vendor-booking
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VendorBookingRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Create vendor booking
+      tags:
+        - bookings
+  /api/v1/bookings/venue:
+    post:
+      consumes:
+        - application/json
+      description: Create venue booking
+      operationId: bookings-venue-booking
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VenueBookingRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Create venue booking
+      tags:
+        - bookings
+  /api/v1/bookmarked-partner:
+    get:
+      description: Get Bookmarked Partner List
+      operationId: BookmarkedPartnerList
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of banners in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.BookmarkPartnerResponse'
+            type: array
+      summary: Get Bookmarked Partner List
+      tags:
+        - Bookmark Partner
+  /api/v1/bookmarked-partner/create:
+    post:
+      consumes:
+        - application/json
+      description: Bookmark Partner
+      operationId: BookmarkedPartnerCreate
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Request payload
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.BookmarkedPartnerInput'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BookmarkPartnerResponse'
+      summary: Bookmark Partner
+      tags:
+        - Bookmark Partner
+  /api/v1/bookmarked-partner/delete/{id}:
+    delete:
+      description: Delete Bookmarked Partner List
+      operationId: BookmarkedPartnerDelete
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.BookmarkPartnerResponse'
+      summary: Delete Bookmarked Partner List
+      tags:
+        - Bookmark Partner
+  /api/v1/eventmagz/comments/{type}/{id}:
+    get:
+      consumes:
+        - application/json
+      description: Get eventmagz comments
+      operationId: eventmagz-comments-get-eventmagz-comments
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feeds in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: Eventmagz Type
+          enum:
+            - program
+            - news
+            - magazine
+          in: path
+          name: type
+          required: true
+          type: string
+        - description: Eventmagz ID (program_id, news_id, or magazine_id)
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.EventmagzComment'
+            type: array
+      summary: Get eventmagz comments
+      tags:
+        - eventmagz-comments
+  /api/v1/eventmagz/comments/create/{type}/{id}:
+    post:
+      consumes:
+        - application/json
+      description: Create eventmagz comment
+      operationId: eventmagz-comments-create-eventmagz-comments
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Eventmagz Type
+          enum:
+            - program
+            - news
+            - magazine
+          in: path
+          name: type
+          required: true
+          type: string
+        - description: Eventmagz ID (program_id, news_id, or magazine_id)
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateCommentRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EventmagzComment'
+      summary: Create eventmagz comment
+      tags:
+        - eventmagz-comments
+  /api/v1/eventmagz/comments/delete/{type}/{comment_id}:
+    delete:
+      consumes:
+        - application/json
+      description: Delete eventmagz comment
+      operationId: eventmagz-comments-delete-eventmagz-comments
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Comment ID
+          in: path
+          name: comment_id
+          required: true
+          type: integer
+        - description: Eventmagz Type
+          enum:
+            - program
+            - news
+            - magazine
+          in: path
+          name: type
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EventmagzComment'
+      summary: Delete eventmagz comment
+      tags:
+        - eventmagz-comments
+  /api/v1/eventmagz/comments/report:
+    post:
+      consumes:
+        - application/json
+      description: Create magazine report
+      operationId: magazines-create-magazine-report
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateMagazineReportRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.MagazineReport'
+      summary: Create magazine report
+      tags:
+        - eventmagz-comments
+  /api/v1/eventmagz/comments/report/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get magazines report categories
+      operationId: magazines-get-magazine-report-categories
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feeds in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.MagazineReportCategory'
+            type: array
+      summary: Get magazines report categories
+      tags:
+        - eventmagz-comments
+  /api/v1/eventmagz/comments/update/{type}/{comment_id}:
+    patch:
+      consumes:
+        - application/json
+      description: Update eventmagz comment
+      operationId: eventmagz-comments-update-eventmagz-comments
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Comment ID
+          in: path
+          name: comment_id
+          required: true
+          type: integer
+        - description: Eventmagz Type
+          enum:
+            - program
+            - news
+            - magazine
+          in: path
+          name: type
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateCommentRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.EventmagzComment'
+      summary: Update eventmagz comment
+      tags:
+        - eventmagz-comments
+  /api/v1/feeds:
+    get:
+      consumes:
+        - application/json
+      description: Get feeds
+      operationId: feeds-get-feeds
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: feed category id
+          in: query
+          name: feed_category_id
+          type: integer
+        - description: Search q
+          in: query
+          name: q
+          type: string
+        - default: all
+          description: search type
+          enum:
+            - all
+            - username
+            - caption
+            - hastag
+          in: query
+          name: searchType
+          required: true
+          type: string
+        - description: Order Direction
+          enum:
+            - ASC
+            - DESC
+          in: query
+          name: order
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feed categories in single page
+          in: query
+          name: pageSize
+          type: integer
+        - default: all
+          description: feed type
+          enum:
+            - all
+            - photo
+            - video
+          in: query
+          name: feed_type
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Feed'
+            type: array
+      summary: Get feeds
+      tags:
+        - feeds
+  /api/v1/feeds/{feed_id}:
+    delete:
+      consumes:
+        - application/json
+      description: Delete feed
+      operationId: feeds-delete-feed
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Feed'
+      summary: Delete feed
+      tags:
+        - feeds
+    get:
+      consumes:
+        - application/json
+      description: Get feed by feed_id
+      operationId: feeds-get-feed-by-feed-id
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Feed'
+      summary: Get feed by feed_id
+      tags:
+        - feeds
+    patch:
+      consumes:
+        - application/json
+      description: Update feed
+      operationId: feeds-update-feed
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.UpdateFeedRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Feed'
+      summary: Update feed
+      tags:
+        - feeds
+  /api/v1/feeds/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get feed categories
+      operationId: feeds-get-feed-categories
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feed categories in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.FeedCategory'
+            type: array
+      summary: Get feed categories
+      tags:
+        - feeds
+  /api/v1/feeds/comment/{comment_id}:
+    delete:
+      consumes:
+        - application/json
+      description: Delete feed comment
+      operationId: feeds-delete-feed-comment
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Comment ID
+          in: path
+          name: comment_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FeedComment'
+      summary: Delete feed comment
+      tags:
+        - feeds
+    patch:
+      consumes:
+        - application/json
+      description: Update feed comment
+      operationId: feeds-update-feed-comment
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Comment ID
+          in: path
+          name: comment_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateFeedCommentRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FeedComment'
+      summary: Update feed comment
+      tags:
+        - feeds
+  /api/v1/feeds/comment/{feed_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get feed comment
+      operationId: feeds-get-feed-comment
+      parameters:
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feed categories in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.FeedComment'
+            type: array
+      summary: Get feed comment
+      tags:
+        - feeds
+    post:
+      consumes:
+        - application/json
+      description: Create feed comment
+      operationId: feeds-create-feed-comment
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateFeedCommentRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FeedComment'
+      summary: Create feed comment
+      tags:
+        - feeds
+  /api/v1/feeds/create:
+    post:
+      consumes:
+        - application/json
+      description: Create feed
+      operationId: feeds-create-feed
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateFeedRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Feed'
+      summary: Create feed
+      tags:
+        - feeds
+  /api/v1/feeds/like/{feed_id}:
+    post:
+      consumes:
+        - application/json
+      description: Like feed
+      operationId: feeds-like-feed
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FeedLike'
+      summary: Like feed
+      tags:
+        - feeds
+  /api/v1/feeds/my-feeds:
+    get:
+      consumes:
+        - application/json
+      description: Get my feeds
+      operationId: feeds-get-my-feeds
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feeds in single page
+          in: query
+          name: pageSize
+          type: integer
+        - default: all
+          description: feed type
+          enum:
+            - all
+            - photo
+            - video
+          in: query
+          name: feed_type
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Feed'
+            type: array
+      summary: Get my feeds
+      tags:
+        - feeds
+  /api/v1/feeds/report/{feed_id}:
+    post:
+      consumes:
+        - application/json
+      description: Create feed report
+      operationId: feeds-create-feed-report
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: feed_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateFeedReportRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.FeedReport'
+      summary: Create feed report
+      tags:
+        - feeds
+  /api/v1/feeds/report/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get feed report categories
+      operationId: feeds-get-feed-report-categories
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.FeedReportCategory'
+            type: array
+      summary: Get feed report categories
+      tags:
+        - feeds
+  /api/v1/feeds/scroll:
+    get:
+      consumes:
+        - application/json
+      description: Get feed scroll by feed_id
+      operationId: feeds-get-feed-by-scroll-id
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: query
+          name: feed_id
+          required: true
+          type: integer
+        - default: photo
+          description: feed type
+          enum:
+            - photo
+            - video
+          in: query
+          name: feed_type
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feed categories in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Feed'
+      summary: Get feed scroll by feed_id
+      tags:
+        - feeds
+  /api/v1/feeds/upload-video:
+    post:
+      consumes:
+        - application/json
+      description: Upload feed video
+      operationId: feeds-upload-feed-video
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VodUpdateRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Upload feed video
+      tags:
+        - feeds
+  /api/v1/feeds/upload-video/refresh:
+    post:
+      consumes:
+        - application/json
+      description: Refresh upload feed video
+      operationId: feeds-refresh-upload-feed-video
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RefreshTokenRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Refresh upload feed video
+      tags:
+        - feeds
+  /api/v1/feeds/user/{user_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get user feeds
+      operationId: feeds-get-user-feeds
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: User ID
+          in: path
+          name: user_id
+          required: true
+          type: integer
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of feed categories in single page
+          in: query
+          name: pageSize
+          type: integer
+        - default: all
+          description: feed type
+          enum:
+            - all
+            - photo
+            - video
+          in: query
+          name: feed_type
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Feed'
+            type: array
+      summary: Get user feeds
+      tags:
+        - feeds
+  /api/v1/feeds/video-url/{video_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get feed video URL
+      operationId: feeds-get-feed-video-url
+      parameters:
+        - description: Video ID
+          in: path
+          name: video_id
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get feed video URL
+      tags:
+        - feeds
+  /api/v1/influencers/{id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get influencer detail
+      operationId: influencers-get-influencer-detail
+      parameters:
+        - description: Influencer ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InfluencerInfo'
+      summary: Get influencer detail
+      tags:
+        - influencers
+  /api/v1/magazine:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of magazines
+      operationId: magazines-magazine-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of magazine in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter magazines by category
+          in: query
+          name: category_id
+          type: string
+        - description: Search By title
+          in: query
+          name: title
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Magazine'
+            type: array
+      summary: Get list of magazines
+      tags:
+        - magazines
+  /api/v1/magazine/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of magazines category
+      operationId: magazines-magazines-category-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of magazines in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.MagazineCategory'
+            type: array
+      summary: Get list of magazines category
+      tags:
+        - magazines
+  /api/v1/magazine/get:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get magazine by slug url
+      operationId: magazines-get-magazine-by-slug-url
+      parameters:
+        - description: slug url
+          in: query
+          name: slug_url
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Magazine'
+      summary: Get magazine by slug url
+      tags:
+        - magazines
+  /api/v1/magazine/top:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of magazines top article
+      operationId: magazines-magazine-list-top-article
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of magazine in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: date type
+          enum:
+            - TODAY
+            - WEEK
+            - MONTH
+            - YEAR
+          in: query
+          name: dateType
+          required: true
+          type: string
+        - description: date type
+          enum:
+            - image
+            - youtube
+          in: query
+          name: typeThumbnail
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Magazine'
+            type: array
+      summary: Get list of magazines top article
+      tags:
+        - magazines
+  /api/v1/news:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of news
+      operationId: news-news-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of news in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter news by news_category_id
+          in: query
+          name: news_category_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.News'
+            type: array
+      summary: Get list of news
+      tags:
+        - news
+  /api/v1/news/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of news category
+      operationId: news-news-category-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of news in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.NewsCategory'
+            type: array
+      summary: Get list of news category
+      tags:
+        - news
+  /api/v1/notifications:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of notifications
+      operationId: notifications-notifications-list
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of notifications in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Notification'
+            type: array
+      summary: Get list of notifications
+      tags:
+        - notifications
+  /api/v1/notifications/read:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Read all notification
+      operationId: notifications-read-all-notification
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Notification'
+      summary: Read all notification
+      tags:
+        - notifications
+  /api/v1/notifications/read/{notification_id}:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Read notification
+      operationId: notifications-read-notification
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Notification ID
+          in: path
+          name: notification_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Notification'
+      summary: Read notification
+      tags:
+        - notifications
+  /api/v1/partners:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Search partner
+      operationId: partners-partner-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: keyword to search partner name
+          in: query
+          name: name
+          type: string
+        - description: id to filter by category
+          in: query
+          name: category_id
+          type: string
+        - description: id to filter by city
+          in: query
+          name: city_id
+          type: string
+        - description: search partner by type
+          enum:
+            - TALENT
+            - INFLUENCER
+            - VENUE
+            - VENDOR
+          in: query
+          name: partner_type
+          type: string
+        - description: available schedule date
+          in: query
+          name: schedule_date
+          type: string
+        - description: rating
+          in: query
+          name: rating
+          type: integer
+        - description: minimum price
+          in: query
+          name: min_price
+          type: integer
+        - description: maximum price
+          in: query
+          name: max_price
+          type: integer
+        - description: 'example: ACTOR'
+          in: query
+          name: sub_level_1
+          type: string
+        - description: 'example: SOLO'
+          in: query
+          name: sub_level_2
+          type: string
+        - description: 'example: FILM'
+          in: query
+          name: sub_level_3
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Partner'
+            type: array
+      summary: Search partner
+      tags:
+        - partners
+  /api/v1/partners/{id}/{partner_type}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get partner detail
+      operationId: partners-get-partner-detail
+      parameters:
+        - description: Partner ID
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: Partner Type
+          enum:
+            - TALENT
+            - INFLUENCER
+            - VENUE
+            - VENDOR
+          in: path
+          name: partner_type
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Partner'
+      summary: Get partner detail
+      tags:
+        - partners
+  /api/v1/partners/{id}/{partner_type}/{date}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Check partner schedule
+      operationId: partners-check-partner-schedule
+      parameters:
+        - description: Partner ID
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: Partner Type
+          enum:
+            - TALENT
+            - INFLUENCER
+            - VENUE
+            - VENDOR
+          in: path
+          name: partner_type
+          required: true
+          type: string
+        - description: Partner date schedule
+          in: path
+          name: date
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: boolean
+      summary: Check partner schedule
+      tags:
+        - partners
+  /api/v1/partners/categorized:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Search categorized partner
+      operationId: partners-search-catgoriezed-partner
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: keyword to search partner name
+          in: query
+          name: name
+          type: string
+        - description: id to filter by category
+          in: query
+          name: category_id
+          type: string
+        - description: id to filter by city
+          in: query
+          name: city_id
+          type: string
+        - description: search partner by type
+          enum:
+            - TALENT
+            - INFLUENCER
+            - VENUE
+            - VENDOR
+          in: query
+          name: partner_type
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Partner'
+            type: array
+      summary: Search categorized partner
+      tags:
+        - partners
+  /api/v1/partners/in/add-bank-account:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Add bank account
+      operationId: partners-add-bank-account
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.AddBankAccount'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PartnerBankAccount'
+      summary: Add bank account
+      tags:
+        - partners
+  /api/v1/partners/in/add-item:
+    post:
+      consumes:
+        - multipart/form-data
+      description: capacity dan area_size hanya diisi jika venue. sedangkan details_item
+        dan minimum_order hanya diisi jika vendor
+      operationId: partners-add-new-item
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.AddPartnerItemRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VenueVendorItem'
+      summary: Add new item
+      tags:
+        - partners
+  /api/v1/partners/in/add-service:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Add new service
+      operationId: partners-add-new-service
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.AddInfluencerServiceRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InfluencerService'
+      summary: Add new service
+      tags:
+        - partners
+  /api/v1/partners/in/delete-bank-account/{id}:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete bank account
+      operationId: partners-delete-bank-account
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: bank account id
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PartnerBankAccount'
+      summary: Delete bank account
+      tags:
+        - partners
+  /api/v1/partners/in/delete-item/{item_id}:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete item
+      operationId: partners-delete-item
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Item ID
+          in: path
+          name: item_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VenueVendorItem'
+      summary: Delete item
+      tags:
+        - partners
+  /api/v1/partners/in/delete-service/{id}:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete service
+      operationId: partners-delete-service
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Influencer Service ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InfluencerService'
+      summary: Delete service
+      tags:
+        - partners
+  /api/v1/partners/in/edit-item/{item_id}:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Edit item
+      operationId: partners-edit-item
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Item ID
+          in: path
+          name: item_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.EditPartnerItemRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VenueVendorItem'
+      summary: Edit item
+      tags:
+        - partners
+  /api/v1/partners/in/edit-service/{id}:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Edit service
+      operationId: partners-edit-service
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Partner ID
+          in: path
+          name: id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.AddInfluencerServiceRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.InfluencerService'
+      summary: Edit service
+      tags:
+        - partners
+  /api/v1/partners/in/item/{item_id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get item detail
+      operationId: partners-item
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Item ID
+          in: path
+          name: item_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VenueVendorItem'
+      summary: Get item detail
+      tags:
+        - partners
+  /api/v1/partners/in/manage-schedules:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Manage partner schedule
+      operationId: partners-manage-partner-schedules
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ManagePartnerScheduleRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerCalendar'
+            type: array
+      summary: Manage partner schedule
+      tags:
+        - partners
+  /api/v1/partners/in/my-orders:
+    get:
+      consumes:
+        - application/json
+      description: Get my orders
+      operationId: partners-get-orders
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: filter by approval status (0 = menunggu partner, 1 = diterima,
+            2 = selesai, 3 = diselesaikan oleh partner, -1 = ditolak)
+          in: query
+          name: approval_status
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Booking'
+            type: array
+      summary: Get my orders
+      tags:
+        - partners
+  /api/v1/partners/in/my-orders/{booking_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get my orders detail
+      operationId: partners-get-orders-detail
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: booking id
+          in: path
+          name: booking_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Get my orders detail
+      tags:
+        - partners
+  /api/v1/partners/in/my-schedules:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get partner schedules
+      operationId: partners-partner-schedules
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of banners in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerCalendar'
+            type: array
+      summary: Get partner schedules
+      tags:
+        - partners
+  /api/v1/partners/in/update-booking-approval:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Update booking approval
+      operationId: partners-update-booking-approval
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.BookingApprovalRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Booking'
+      summary: Update booking approval
+      tags:
+        - partners
+  /api/v1/partners/in/update-price-rate:
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Update partner price rate
+      operationId: partners-update-price-rate
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.UpdatePriceRateRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.HistoryPrice'
+      summary: Update partner price rate
+      tags:
+        - partners
+  /api/v1/partners/locations:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of locations/cities
+      operationId: partners-partner-location-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of cities in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.City'
+            type: array
+      summary: Get list of locations/cities
+      tags:
+        - partners
+  /api/v1/partners/popular:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of popular partners
+      operationId: partners-get-partners
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partners in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter by city
+          in: query
+          name: city_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Partner'
+            type: array
+      summary: Get list of popular partners
+      tags:
+        - partners
+  /api/v1/partners/schedules/{partner_id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get partner schedules
+      operationId: partners-partner-schedules-no-auth
+      parameters:
+        - description: partner id
+          in: path
+          name: partner_id
+          required: true
+          type: integer
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of banners in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerCalendar'
+            type: array
+      summary: Get partner schedules
+      tags:
+        - partners
+  /api/v1/payments/{auth_token}/{booking_id}/sdk/charge:
+    post:
+      consumes:
+        - application/json
+      description: Charge sdk
+      operationId: payments-charge-sdk
+      parameters:
+        - description: snap payload
+          in: body
+          name: payload
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.SnapRequestSwagger'
+        - description: Authorization token
+          in: path
+          name: auth_token
+          required: true
+          type: string
+        - description: Booking id
+          in: path
+          name: booking_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Charge sdk
+      tags:
+        - payments
+  /api/v1/payments/{booking_id}/charge:
+    post:
+      consumes:
+        - application/json
+      description: Charge
+      operationId: payments-charge
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: booking id
+          in: path
+          name: booking_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Charge
+      tags:
+        - payments
+  /api/v1/payments/notification:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Payment notification handler
+      operationId: payments-notification
+      parameters:
+        - description: notification payload
+          in: body
+          name: data
+          required: true
+          schema:
+            $ref: '#/definitions/models.Payload'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Payment'
+      summary: Payment notification handler
+      tags:
+        - payments
+  /api/v1/payments/snap-token:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get snap token quick
+      operationId: payments-get-snap-token-quick
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Get snap token quick
+      tags:
+        - payments
+  /api/v1/programs:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of programs
+      operationId: programs-program-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of programs in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter programs by category
+          enum:
+            - internal
+            - external
+          in: query
+          name: category
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Program'
+            type: array
+      summary: Get list of programs
+      tags:
+        - programs
+  /api/v1/promo:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of promo
+      operationId: promo-promo-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of promo in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter promo by tipe id
+          in: query
+          name: promo_tipe_id
+          type: string
+        - description: promo tipe
+          enum:
+            - TALENT
+            - TICKET
+            - INFLUENCER
+            - VENDOR
+            - VENUE
+            - PROGRAM
+          in: query
+          name: PromoTipe
+          type: string
+        - description: Search By name
+          in: query
+          name: name
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Promo'
+            type: array
+      summary: Get list of promo
+      tags:
+        - promo
+  /api/v1/reference/bank:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of banks
+      operationId: banks-bank-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of banks in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: keyword to search bank name
+          in: query
+          name: q
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.BankAccount'
+            type: array
+      summary: Get list of banks
+      tags:
+        - references
+  /api/v1/reference/cities:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of cities
+      operationId: cities-city-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of cities in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: keyword to search city name
+          in: query
+          name: q
+          type: string
+        - description: name categories
+          enum:
+            - TALENT
+            - VENDOR
+            - VENUE
+            - INFLUENCER
+            - ALL
+          in: query
+          name: type
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.City'
+            type: array
+      summary: Get list of cities
+      tags:
+        - references
+  /api/v1/reference/cities/{id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get city detail
+      operationId: cities-city-detail
+      parameters:
+        - description: City ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.City'
+      summary: Get city detail
+      tags:
+        - references
+  /api/v1/reference/marital:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of marital_statuses
+      operationId: marital_statuses-marital_statuse-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of marital_statuses in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.MaritalStatus'
+            type: array
+      summary: Get list of marital_statuses
+      tags:
+        - references
+  /api/v1/reference/partner-categories/grouped:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of grouped partner categories
+      operationId: partner-categories-partner-grouped-categories-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partner_categories in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: name categories
+          enum:
+            - TALENT
+            - VENDOR
+            - VENUE
+            - INFLUENCER
+          in: query
+          name: name_categories
+          required: true
+          type: string
+        - description: 'example: ACTOR'
+          in: query
+          name: sub_level_1
+          type: string
+        - default: true
+          description: group by sub_level_1
+          in: query
+          name: group_sub_level_1
+          type: boolean
+        - description: 'example: SOLO'
+          in: query
+          name: sub_level_2
+          type: string
+        - description: group by sub_level_2
+          in: query
+          name: group_sub_level_2
+          type: boolean
+        - description: 'example: FILM'
+          in: query
+          name: sub_level_3
+          type: string
+        - description: group by sub_level_3
+          in: query
+          name: group_sub_level_3
+          type: boolean
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerCategoriesGrouped'
+            type: array
+      summary: Get list of grouped partner categories
+      tags:
+        - references
+  /api/v1/reference/partner_categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of partner_categories
+      operationId: partner_categories-partner_category-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of partner_categories in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: name categories
+          enum:
+            - TALENT
+            - VENDOR
+            - VENUE
+            - INFLUENCER
+          in: query
+          name: name_categories
+          required: true
+          type: string
+        - description: 'example: ACTOR'
+          in: query
+          name: sub_level_1
+          type: string
+        - description: 'example: SOLO'
+          in: query
+          name: sub_level_2
+          type: string
+        - description: 'example: FILM'
+          in: query
+          name: sub_level_3
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerCategories'
+            type: array
+      summary: Get list of partner_categories
+      tags:
+        - references
+  /api/v1/reference/provinces:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of provinces
+      operationId: provinces-province-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of provinces in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: keyword to search province name
+          in: query
+          name: q
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Province'
+            type: array
+      summary: Get list of provinces
+      tags:
+        - references
+  /api/v1/reference/religion:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of religions
+      operationId: religions-religion-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of religion in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Religion'
+            type: array
+      summary: Get list of religions
+      tags:
+        - references
+  /api/v1/reference/service_type:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of service_types
+      operationId: service_types-service_type-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of service_type in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.ServiceType'
+            type: array
+      summary: Get list of service_types
+      tags:
+        - references
+  /api/v1/reference/socmed_type:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of socmed_types
+      operationId: socmed_types-socmed_type-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of socmed_type in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Socmed_type'
+            type: array
+      summary: Get list of socmed_types
+      tags:
+        - references
+  /api/v1/reviews/partner/{id}:
+    get:
+      description: List Review By Partner ID
+      operationId: ReviewList
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Partner ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.PartnerReview'
+            type: array
+      summary: List Review By Partner ID
+      tags:
+        - Partner Review
+  /api/v1/reviews/partner/create:
+    post:
+      consumes:
+        - application/json
+      description: Create Review
+      operationId: ReviewCreate
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Request payload
+          in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ReviewRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.PartnerReview'
+      summary: Create Review
+      tags:
+        - Partner Review
+  /api/v1/talents/{id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get talent detail
+      operationId: talents-get-talent-detail
+      parameters:
+        - description: Talent ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Talent'
+      summary: Get talent detail
+      tags:
+        - talents
+  /api/v1/talents/rider:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Create talent rider
+      operationId: talents-create-talent-rider
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateTalentRiderRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TalentRider'
+      summary: Create talent rider
+      tags:
+        - talents
+  /api/v1/talents/rider/{talent_rider_id}:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete talent rider
+      operationId: talents-delete-talent-rider
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Talent rider ID
+          in: path
+          name: talent_rider_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TalentRider'
+      summary: Delete talent rider
+      tags:
+        - talents
+    patch:
+      consumes:
+        - multipart/form-data
+      description: Update talent rider
+      operationId: talents-update-talent-rider
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Talent rider ID
+          in: path
+          name: talent_rider_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateTalentRiderRequest'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.TalentRider'
+      summary: Update talent rider
+      tags:
+        - talents
+  /api/v1/ticket:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of ticket
+      operationId: ticket-ticket-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of ticket in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter ticket by category
+          in: query
+          name: category_id
+          type: string
+        - description: Search By title
+          in: query
+          name: title
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Ticket'
+            type: array
+      summary: Get list of ticket
+      tags:
+        - ticket
+  /api/v1/ticket/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of ticket category
+      operationId: ticket-ticket-category-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of ticket in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.TicketCategory'
+            type: array
+      summary: Get list of ticket category
+      tags:
+        - ticket
+  /api/v1/ticket/items:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get item of ticket
+      operationId: ticket-item-list
+      parameters:
+        - description: id to filter item ticket for ticket
+          in: query
+          name: ticket_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Ticket'
+            type: array
+      summary: Get item of ticket
+      tags:
+        - ticket
+  /api/v1/ticket/lineup:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get lineup of ticket
+      operationId: ticket-lineup-list
+      parameters:
+        - description: id to filter item ticket for ticket
+          in: query
+          name: ticket_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.TicketLineup'
+            type: array
+      summary: Get lineup of ticket
+      tags:
+        - ticket
+  /api/v1/tnv/create:
+    post:
+      consumes:
+        - application/json
+      description: Create tnv
+      operationId: tnv-create
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateTnvData'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Tnv'
+      summary: Create tnv
+      tags:
+        - tnv
+  /api/v1/tnv/resend-otp:
+    post:
+      consumes:
+        - application/json
+      description: Verify OTP
+      operationId: tnv-resend-otp-no-auth
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ResendOTPNoAuthRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OTPNoAuth'
+      summary: Verify OTP
+      tags:
+        - tnv
+  /api/v1/tnv/verify-otp:
+    post:
+      consumes:
+        - application/json
+      description: Verify OTP
+      operationId: tnv-verify-otp-no-auth
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VerifyOTPNoAuthRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.OTPNoAuth'
+      summary: Verify OTP
+      tags:
+        - tnv
+  /api/v1/user/add-bank-account:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Add bank account
+      operationId: users-add-bank-account
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.AddBankAccount'
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBankAccount'
+      summary: Add bank account
+      tags:
+        - users
+  /api/v1/user/block/{user_id}:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Block a user
+      operationId: users-block-block-user
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: user id you want to block
+          in: path
+          name: user_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBlock'
+      summary: Block a user
+      tags:
+        - users
+  /api/v1/user/change-password:
+    patch:
+      consumes:
+        - application/json
+      description: Change password
+      operationId: users-change-password
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ChangePasswordRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Change password
+      tags:
+        - users
+  /api/v1/user/delete-bank-account/{id}:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete bank account
+      operationId: users-delete-bank-account
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: bank account id
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBankAccount'
+      summary: Delete bank account
+      tags:
+        - users
+  /api/v1/user/edit-partner-profile:
+    patch:
+      consumes:
+        - application/json
+      description: Edit partner profile
+      operationId: users-edit-partner-profile
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.EditPartnerRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Edit partner profile
+      tags:
+        - users
+  /api/v1/user/edit-user-profile:
+    patch:
+      consumes:
+        - application/json
+      description: Edit user profile
+      operationId: users-edit-user-profile
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.EditUserRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Edit user profile
+      tags:
+        - users
+  /api/v1/user/my-profile:
+    post:
+      consumes:
+        - application/json
+      description: Get my profile
+      operationId: users-my-profile
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+              - $ref: '#/definitions/helper.HttpResponse'
+              - properties:
+                  data:
+                    $ref: '#/definitions/models.User'
+                type: object
+      summary: Get my profile
+      tags:
+        - users
+  /api/v1/user/report/{user_id}:
+    post:
+      consumes:
+        - application/json
+      description: Create user report
+      operationId: users-create-user-report
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: Feed ID
+          in: path
+          name: user_id
+          required: true
+          type: integer
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.CreateUserReportRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserReport'
+      summary: Create user report
+      tags:
+        - users
+  /api/v1/user/report/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get user report categories
+      operationId: users-get-user-report-categories
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.UserReportCategory'
+            type: array
+      summary: Get user report categories
+      tags:
+        - users
+  /api/v1/user/request-otp:
+    post:
+      consumes:
+        - application/json
+      description: Request OTP
+      operationId: users-request-otp
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RequestOTPRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Request OTP
+      tags:
+        - users
+  /api/v1/user/upload-profile-photo:
+    post:
+      consumes:
+        - application/json
+      description: Upload profile photo
+      operationId: users-upload-profile-photo
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: image file
+          in: formData
+          name: image
+          required: true
+          type: file
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Upload profile photo
+      tags:
+        - users
+  /api/v1/vendors/{id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get vendor detail
+      operationId: vendors-get-vendor-detail
+      parameters:
+        - description: Vendor ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Vendor'
+      summary: Get vendor detail
+      tags:
+        - vendors
+  /api/v1/venues/{id}:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get venue detail
+      operationId: venues-get-venue-detail
+      parameters:
+        - description: Venue ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.VenueInfo'
+      summary: Get venue detail
+      tags:
+        - venue
+  /api/v1/videos:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of videos
+      operationId: videos-videos-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of videos in single page
+          in: query
+          name: pageSize
+          type: integer
+        - description: id to filter videos by videos_category_id
+          in: query
+          name: videos_category_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Video'
+            type: array
+      summary: Get list of videos
+      tags:
+        - videos
+  /api/v1/videos/categories:
+    get:
+      consumes:
+        - multipart/form-data
+      description: Get list of videos category
+      operationId: videos-videos-category-list
+      parameters:
+        - default: 1
+          description: page number
+          in: query
+          name: page
+          type: integer
+        - default: 10
+          description: number of videos in single page
+          in: query
+          name: pageSize
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.VideosCategory'
+            type: array
+      summary: Get list of videos category
+      tags:
+        - videos
+  /api/v1/vod:
+    get:
+      consumes:
+        - application/json
+      description: List Vod
+      operationId: vod-vod-list
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Vod'
+            type: array
+      summary: List Vod
+      tags:
+        - VOD
+  /api/v1/vod/{vod_id}:
+    get:
+      consumes:
+        - application/json
+      description: Get vod by id
+      operationId: vod-get-vod
+      parameters:
+        - description: VOD ID
+          in: path
+          name: vod_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Vod'
+      summary: Get vod by id
+      tags:
+        - VOD
+  /api/v1/vod/encode-base64:
+    post:
+      consumes:
+        - application/json
+      description: Encode file to base64
+      operationId: VOD-encode-video-to-base64
+      parameters:
+        - description: file
+          in: formData
+          name: files
+          required: true
+          type: file
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Encode file to base64
+      tags:
+        - VOD
+  /healthcheck:
+    get:
+      consumes:
+        - application/json
+      description: Check API health status
+      operationId: healthcheck-healthcheck
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: object
+      summary: Check API health status
+      tags:
+        - healthcheck
+swagger: "2.0"

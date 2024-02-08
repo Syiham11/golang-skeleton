@@ -10,7 +10,7 @@ RUN apk add --update --no-cache git libc-dev tzdata
 RUN apk update && apk add --no-cache git bash
 RUN apk add --update make
 RUN apk add mysql-client
-RUN mkdir /injection.javamifi.com
+RUN mkdir /greebel.core.be
 RUN  echo "https://mirror.alwyzon.net/alpine/v3.8/main/" > /etc/apk/repositories \
      && echo "https://mirror.alwyzon.net/alpine/v3.8/community" >> /etc/apk/repositories \
      && apk update && apk add --no-cache \
@@ -42,9 +42,9 @@ RUN  echo "https://mirror.alwyzon.net/alpine/v3.8/main/" > /etc/apk/repositories
 COPY --from=builder /bin/wkhtmltopdf /bin/wkhtmltopdf
 COPY --from=builder /bin/wkhtmltoimage /bin/wkhtmltoimage
 
-WORKDIR /injection.javamifi.com
+WORKDIR /greebel.core.be
 
-COPY . /injection.javamifi.com
+COPY . /greebel.core.be
 
 # COPY fonts/ /usr/share/fonts
 

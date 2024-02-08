@@ -1,0 +1,8 @@
+https://dev.to/techschoolguru/how-to-write-run-database-migration-in-golang-5h6g
+https://github.com/golang-migrate/migrate/tree/master/cmd/migrate
+https://scoop.sh/
+
+migrate create -ext sql -dir db/migrations create_table_book_talents
+
+migrate -path db/migrations -database "mysql://root@(localhost:3306)/db_eventori" -verbose up
+

@@ -1,4 +1,4 @@
-BIN_NAME=injection.javamifi.com
+BIN_NAME=greebel.core.be
 #!make
 include .env
 export $(shell sed 's/=.*//' .env)
@@ -7,10 +7,10 @@ exports:
 	@printenv | grep MYAPP
 
 exec:
-	if [ -f ./injection.javamifi.com.exe ]; then \
-		./injection.javamifi.com.exe; \
+	if [ -f ./greebel.core.be.exe ]; then \
+		./greebel.core.be.exe; \
 	else \
-		./injection.javamifi.com; \
+		./greebel.core.be; \
 	fi \
 
 run-dev: exports
@@ -18,10 +18,10 @@ run-dev: exports
 
 run: exports generate-docs
 	@go build 
-	if [ -f ./injection.javamifi.com.exe ]; then \
-		./injection.javamifi.com.exe; \
+	if [ -f ./greebel.core.be.exe ]; then \
+		./greebel.core.be.exe; \
 	else \
-		./injection.javamifi.com; \
+		./greebel.core.be; \
 	fi \
 
 test-env:

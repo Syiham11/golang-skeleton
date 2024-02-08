@@ -1,27 +1,52 @@
 package helper
 
 import (
+	"greebel.core.be/core"
 	"strconv"
-
-	"injection.javamifi.com/core"
+	"time"
 
 	"github.com/golang-jwt/jwt"
 )
 
 type (
 	JWTclaims struct {
-		ID   int `json:"id"`
-		Tipe int `json:"tipe"`
+		ID        int `json:"id"`
+		IsPartner int `json:"is_partner"`
+		jwt.StandardClaims
+	}
+	JWTclaimsTicket struct {
+		ID      int    `json:"id"`
+		OrderID string `json:"order_id"`
 		jwt.StandardClaims
 	}
 )
 
-func CreateJwtToken(userID int, tipe int) (string, error) {
+func CreateJwtToken(userID int, isPartner int) (string, error) {
 	claim := JWTclaims{
 		userID,
-		tipe,
+		isPartner,
 		jwt.StandardClaims{
 			Id: strconv.Itoa(userID),
+		},
+	}
+
+	rawToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
+	token, err := rawToken.SignedString([]byte(core.App.Config.JWT_SECRET))
+	if err != nil {
+		return "", err
+	}
+
+	return token, nil
+}
+
+func CreateJwtTokenPDF(userID int, OrderID string) (string, error) {
+	expireToken := time.Now().Add(time.Hour * 12).Unix()
+	claim := JWTclaimsTicket{
+		userID,
+		OrderID,
+		jwt.StandardClaims{
+			ExpiresAt: expireToken,
+			Id:        strconv.Itoa(userID),
 		},
 	}
 

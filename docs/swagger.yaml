@@ -1,14 +1,692 @@
+definitions:
+  controllers.ChangePasswordRequest:
+    properties:
+      otp:
+        type: string
+      password:
+        type: string
+      repeat_password:
+        type: string
+    type: object
+  controllers.EditUser:
+    properties:
+      address:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      phone_number:
+        type: string
+      username:
+        type: string
+    required:
+      - email
+      - name
+      - phone_number
+      - username
+    type: object
+  controllers.EditUserRequest:
+    properties:
+      user:
+        $ref: '#/definitions/controllers.EditUser'
+    type: object
+  controllers.ForgotPasswordRequest:
+    properties:
+      otp:
+        type: string
+      password:
+        type: string
+      repeat_password:
+        type: string
+    type: object
+  controllers.LoginRequest:
+    properties:
+      password:
+        type: string
+      player_id:
+        type: string
+      username:
+        type: string
+    type: object
+  controllers.RegisterUserRequest:
+    properties:
+      otp:
+        type: string
+      user:
+        $ref: '#/definitions/controllers.User'
+    type: object
+  controllers.RegisterUserRequestNoOtp:
+    properties:
+      user:
+        $ref: '#/definitions/controllers.User'
+    type: object
+  controllers.RequestOTPNoAuthRequest:
+    properties:
+      category:
+        type: string
+      email:
+        type: string
+    type: object
+  controllers.RequestOTPRequest:
+    properties:
+      category:
+        type: string
+    type: object
+  controllers.User:
+    properties:
+      company:
+        type: string
+      confirm_password:
+        type: string
+      email:
+        type: string
+      name:
+        type: string
+      paket:
+        type: integer
+      password:
+        type: string
+      phone_number:
+        type: string
+      username:
+        type: string
+    required:
+      - confirm_password
+      - email
+      - name
+      - password
+      - phone_number
+      - username
+    type: object
+  controllers.VerifyOTPRequest:
+    properties:
+      category:
+        type: string
+      code:
+        type: string
+      email:
+        type: string
+      user_id:
+        type: integer
+    required:
+      - category
+      - code
+    type: object
+  helper.HttpResponse:
+    properties:
+      data:
+        additionalProperties: true
+        type: object
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  models.User:
+    properties:
+      address:
+        type: string
+      bank_accounts:
+        items:
+          $ref: '#/definitions/models.UserBankAccount'
+        type: array
+      company:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: integer
+      is_partner:
+        type: integer
+      name:
+        type: string
+      paket:
+        type: integer
+      password:
+        type: string
+      phone_number:
+        type: string
+      player_id:
+        type: string
+      profile_picture:
+        type: string
+      status_active:
+        type: integer
+      updated_at:
+        type: string
+      username:
+        type: string
+    type: object
+  models.UserBankAccount:
+    properties:
+      account_name:
+        type: string
+      account_number:
+        type: string
+      bank_id:
+        type: integer
+      bank_name:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  models.UserBlock:
+    properties:
+      blocked_user_id:
+        type: integer
+      created_at:
+        type: string
+      id:
+        type: integer
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+    type: object
 info:
-  contact: {}
+  contact: { }
 paths:
+  /api/v1/auth/apple-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Apple login account
+      operationId: auth-apple-login
+      parameters:
+        - description: The token you got from apple login response
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Apple login account
+      tags:
+        - auth
+  /api/v1/auth/delete-image:
+    delete:
+      consumes:
+        - multipart/form-data
+      description: Delete image
+      operationId: auth-delete-image
+      parameters:
+        - description: image filename
+          in: formData
+          name: filename
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.HttpResponse'
+      summary: Delete image
+      tags:
+        - auth
+  /api/v1/auth/facebook-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Facebook login account
+      operationId: auth-facebook-login
+      parameters:
+        - description: Facebook access token
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Facebook login account
+      tags:
+        - auth
+  /api/v1/auth/facebook-login-x:
+    post:
+      consumes:
+        - application/json
+      description: Facebook login account
+      operationId: auth-facebook-login-x
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Facebook login account
+      tags:
+        - auth
+  /api/v1/auth/forgot-password:
+    post:
+      consumes:
+        - application/json
+      description: Forgot password
+      operationId: auth-forgot-password
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ForgotPasswordRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Forgot password
+      tags:
+        - auth
+  /api/v1/auth/google-login:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Google login account
+      operationId: auth-google-login
+      parameters:
+        - description: Google access token
+          in: formData
+          name: access_token
+          required: true
+          type: string
+        - description: Player ID
+          in: formData
+          name: player_id
+          type: string
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Google login account
+      tags:
+        - auth
+  /api/v1/auth/google-login-x:
+    post:
+      consumes:
+        - application/json
+      description: Google login account
+      operationId: auth-google-login-x
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Google login account
+      tags:
+        - auth
+  /api/v1/auth/login:
+    post:
+      consumes:
+        - application/json
+      description: Login account
+      operationId: auth-login
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.LoginRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Login account
+      tags:
+        - auth
+  /api/v1/auth/register-user:
+    post:
+      consumes:
+        - application/json
+      description: Register new user account
+      operationId: auth-register-user
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RegisterUserRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Register new user account
+      tags:
+        - auth
+  /api/v1/auth/registeruser:
+    post:
+      consumes:
+        - application/json
+      description: Register new user account no otp
+      operationId: auth-register-user-nootp
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RegisterUserRequestNoOtp'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Register new user account no otp
+      tags:
+        - auth
+  /api/v1/auth/request-otp:
+    post:
+      consumes:
+        - application/json
+      description: Request OTP
+      operationId: auth-request-otp
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RequestOTPNoAuthRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Request OTP
+      tags:
+        - auth
+  /api/v1/auth/upload-image:
+    post:
+      consumes:
+        - application/json
+      description: Upload image
+      operationId: auth-upload-image
+      parameters:
+        - description: image file
+          in: formData
+          name: image
+          required: true
+          type: file
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Upload image
+      tags:
+        - auth
+  /api/v1/auth/verify-otp:
+    post:
+      consumes:
+        - application/json
+      description: Verify OTP
+      operationId: auth-verify-otp
+      parameters:
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.VerifyOTPRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Verify OTP
+      tags:
+        - auth
+  /api/v1/user/block/{user_id}:
+    post:
+      consumes:
+        - multipart/form-data
+      description: Block a user
+      operationId: users-block-block-user
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: user id you want to block
+          in: path
+          name: user_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.UserBlock'
+      summary: Block a user
+      tags:
+        - users
+  /api/v1/user/change-password:
+    patch:
+      consumes:
+        - application/json
+      description: Change password
+      operationId: users-change-password
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.ChangePasswordRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Change password
+      tags:
+        - users
+  /api/v1/user/delete/{id}:
+    delete:
+      description: Delete users
+      operationId: users-user-delete
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: ID
+          in: path
+          name: id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      security:
+        - ApiKeyAuth: [ ]
+      summary: Delete users
+      tags:
+        - users
+  /api/v1/user/edit-user-profile:
+    patch:
+      consumes:
+        - application/json
+      description: Edit user profile
+      operationId: users-edit-user-profile
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.EditUserRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Edit user profile
+      tags:
+        - users
+  /api/v1/user/my-profile:
+    post:
+      consumes:
+        - application/json
+      description: Get my profile
+      operationId: users-my-profile
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            allOf:
+              - $ref: '#/definitions/helper.HttpResponse'
+              - properties:
+                  data:
+                    $ref: '#/definitions/models.User'
+                type: object
+      summary: Get my profile
+      tags:
+        - users
+  /api/v1/user/request-otp:
+    post:
+      consumes:
+        - application/json
+      description: Request OTP
+      operationId: users-request-otp
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: JSON Request Body
+          in: body
+          name: RequestBody
+          required: true
+          schema:
+            $ref: '#/definitions/controllers.RequestOTPRequest'
+      produces:
+        - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Request OTP
+      tags:
+        - users
+  /api/v1/user/upload-profile-photo:
+    post:
+      consumes:
+        - application/json
+      description: Upload profile photo
+      operationId: users-upload-profile-photo
+      parameters:
+        - description: Auth Token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: image file
+          in: formData
+          name: image
+          required: true
+          type: file
+      produces:
+        - text/plain
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Upload profile photo
+      tags:
+        - users
   /healthcheck:
     get:
       consumes:
-      - application/json
+        - application/json
       description: Check API health status
       operationId: healthcheck-healthcheck
       produces:
-      - application/json
+        - application/json
       responses:
         "200":
           description: OK
@@ -16,5 +694,5 @@ paths:
             type: object
       summary: Check API health status
       tags:
-      - healthcheck
+        - healthcheck
 swagger: "2.0"

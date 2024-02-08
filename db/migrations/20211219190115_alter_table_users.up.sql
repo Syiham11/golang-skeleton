@@ -1,0 +1,1 @@
+ALTER TABLE users ADD player_id TEXT DEFAULT NULL AFTER profile_picture;

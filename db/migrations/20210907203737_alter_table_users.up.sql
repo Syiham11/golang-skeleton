@@ -1,0 +1,4 @@
+ALTER TABLE users MODIFY COLUMN profile_picture TEXT;
+ALTER TABLE users MODIFY COLUMN status_active TINYINT;
+ALTER TABLE users MODIFY COLUMN is_partner TINYINT;
+ALTER TABLE users MODIFY COLUMN password TEXT;

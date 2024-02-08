@@ -3,9 +3,11 @@ package middlewares
 import (
 	"fmt"
 	"net/http"
+	"time"
 
-	"injection.javamifi.com/core"
-	"injection.javamifi.com/helper"
+	"greebel.core.be/core"
+	"greebel.core.be/helper"
+	"greebel.core.be/models"
 
 	"github.com/golang-jwt/jwt"
 	"github.com/labstack/echo/v4"
@@ -30,6 +32,17 @@ func ValidateJWTLogin(next echo.HandlerFunc) echo.HandlerFunc {
 
 		if claims, ok := token.Claims.(jwt.MapClaims); ok {
 			if claims["id"] != 0 {
+				userBanned := models.UserBanned{}
+				currentDate := fmt.Sprintf("%v", time.Now().Format("2006-01-02"))
+				db := core.App.DB
+				notFound := db.Where("user_id = ?", claims["id"]).
+					Where("status = 1 OR (status = 2 AND end_date >= ?)", currentDate).
+					First(&userBanned).
+					RecordNotFound()
+
+				if !notFound {
+					return helper.Response(http.StatusForbidden, "", fmt.Sprintf("%s", "Your account has been banned"))
+				}
 
 				return next(c)
 			} else {
